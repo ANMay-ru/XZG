@@ -29,9 +29,7 @@ jobs:
       - name: Display src/version.h before update
         run: cat src/version.h
 
-      - name: Update version in source code
-        run: |
-          sed -i 's/#define VERSION.*/#define VERSION "${{ steps.get_tag.outputs.tag }}"/' src/version.h
+
 
       - name: Display src/version.h after update
         run: cat src/version.h
