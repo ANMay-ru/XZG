@@ -169,11 +169,3 @@ jobs:
           else
             echo "No changes to commit"
           fi
-
-
-      - name: Send Discord Notification about release
-        run: |
-          json_payload=$(jq -n --arg content "https://github.com/${{ github.repository }}/releases/tag/${{ steps.get_tag.outputs.tag }}" '{content: $content}')
-          curl -H "Content-Type: application/json" \
-              -d "$json_payload" \
-              ${{ secrets.DISCORD_WEBHOOK }}
